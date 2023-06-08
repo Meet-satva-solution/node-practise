@@ -1,0 +1,23 @@
+{
+  "name": "node-practise",
+  "version": "1.0.0",
+  "description": "just practise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Meet-satva-solution/node-practise.git"
+  },
+  "keywords": [
+    "node",
+    "practise"
+  ],
+  "author": "Meet Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Meet-satva-solution/node-practise/issues"
+  },
+  "homepage": "https://github.com/Meet-satva-solution/node-practise#readme"
+}
