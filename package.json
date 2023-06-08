@@ -4,7 +4,8 @@
   "description": "just practise",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.ts"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/Meet-satva-solution/node-practise/issues"
   },
-  "homepage": "https://github.com/Meet-satva-solution/node-practise#readme"
+  "homepage": "https://github.com/Meet-satva-solution/node-practise#readme",
+  "dependencies": {
+    "@types/node": "^20.2.5",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
 }
