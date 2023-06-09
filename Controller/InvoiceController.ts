@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
-import { responseModel } from "../Model/responseModel";
+import { ResponseModel, InvoiceModel } from "../Model/index";
 import { InvoiceInterface } from "../Interface/invoiceInterface";
-import { InvoiceModel } from "../Model/invoiceModel";
 
 class InvoiceController {
   Get(req: Request, res: Response) {
-    let response = new responseModel();
+    let response = new ResponseModel();
     try {
       response.status = 200;
       response.message = "invoice get successfully";
@@ -18,7 +17,7 @@ class InvoiceController {
   }
 
   Save(req: Request, res: Response) {
-    let response = new responseModel();
+    let response = new ResponseModel();
 
     var Invoice = {
       invoices: [

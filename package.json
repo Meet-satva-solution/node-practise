@@ -2,10 +2,10 @@
   "name": "node-practise",
   "version": "1.0.0",
   "description": "just practise",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon --esm index.ts"
+    "start": "npx nodemon --esm src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,10 @@
   },
   "homepage": "https://github.com/Meet-satva-solution/node-practise#readme",
   "dependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.17",
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^20.2.5",
     "express": "^4.18.2",
     "nodemon": "^2.0.22",
