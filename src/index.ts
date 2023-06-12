@@ -1,15 +1,16 @@
-import express, {request, response} from "express";
-import mongoDBConnection from '../database/mongoConfig';
+import express, { request, response } from "express";
+import mongoDBConnection from "../database/mongoConfig";
 import router from "../Route/index";
-import * as evn from "dotenv"
+import * as evn from "dotenv";
+import bodyParser from "body-parser";
 
 const app = express();
-app.use(router);
 const port = process.env.PORT;
 mongoDBConnection.dbConnect();
-
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(router);
 
 app.listen(3000, () => {
-    console.log("server listening on port 3000");
-  });
+  console.log("server listening on port 3000");
+});
