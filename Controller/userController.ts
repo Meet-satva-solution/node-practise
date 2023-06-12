@@ -3,22 +3,33 @@ import User from "../Schema/userSchema";
 import { ResponseModel } from "../Model";
 
 const saveUser = async (req: Request, res: Response) => {
-  const { name, email, password } = req.body;
-
+  // const { name, email, password } = req.body;
+  // const nameU = req.body.name;
+  const user = new User(req.body)
   try {
-    let userObj = {
-      email: email,
-      name: name,
-      password: password,
-    };
-    let userData = await User.create(userObj);
+    // let userObj = {
+    //   email: email,
+    //   name: name,
+    //   password: password,
+    // };
+    // let userObjs = new User()
+    // userObjs.email = email
+    // userObjs.name = name
+    // userObjs.password = password
+    let resp= await user.save();
+
+    // let userData = await User.create(userObj);
     let response = new ResponseModel();
-    response.data = userData;
+    response.data = resp;
     response.status = 201;
     response.message = "User created successfully";
     res.status(201).json(response);
-  } catch (error) {
-    res.status(400).json(error);
+  } catch (error:any) {
+    let response = new ResponseModel();
+    response.data = null;
+    response.status = 400;
+    response.message = error;
+    res.status(400).json(response);
   }
 };
 
