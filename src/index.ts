@@ -1,5 +1,5 @@
 import express, { request, response } from "express";
-import mongoDBConnection from "../database/mongoConfig";
+import mongoDBConnection from "../config/mongoConfig";
 import router from "../Route/index";
 import * as evn from "dotenv";
 import bodyParser from "body-parser";
