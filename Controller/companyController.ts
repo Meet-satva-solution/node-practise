@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { ResponseModel } from "../Model";
 import { PrismaClient } from "@prisma/client";
+import newUserData from "../Repositories/userData"
 
 const prisma = new PrismaClient();
 
@@ -23,25 +24,37 @@ const saveCompany = async (req: Request, res: Response) => {
     //     },
     //   },
     // });
-    const userData = await prisma.userList.findMany({
-        where: {
-            id: {in : req.body.userId},
-        },
-        include:{
-            CompanyList: true
-        }
-    })
-    console.log('userData',userData);
-    
-
-    // const company = await prisma.companyList.update({
-    //     where:{
-    //         id: newCompany.id
+    // const userData = await prisma.userList.findMany({
+    //     where: {
+    //         id: {in : req.body.userId},
     //     },
-    //     data: {
-    //         userData: 
-    //             {'userData' : userData}
-            
+    //     include:{
+    //         CompanyList: true
+    //     }
+    // })
+    // console.log('userData',userData);
+
+    const userData = await prisma.companyList.findMany({
+      include: {
+          user: {
+              select: {
+                  id: true,
+                  name: true,
+                  userEmail: true
+              }
+          }
+      }
+  })
+    
+    const company = await newUserData.getuser()
+    // const company = await prisma.companyList.findMany({
+    //     include: {
+    //       user: {
+    //         select: {
+    //           id: true,
+    //           name: true,
+    //         }
+    //       }
     //     }
     // })
     // // console.log('newCompany',newCompany);
@@ -54,8 +67,9 @@ const saveCompany = async (req: Request, res: Response) => {
 
     let response = {
         status: 201,
-        data: newCompany,
-        message: "Company created successfully"
+        data: company,
+        message: "Company created successfully",
+        newCompanyData:null
     }
     res.send(response);
   } catch (error: any) {
@@ -68,7 +82,6 @@ const saveCompany = async (req: Request, res: Response) => {
     res.status(400).json(response);
   }
 };
-
 export default {
     saveCompany
   };
